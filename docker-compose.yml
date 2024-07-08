@@ -1,0 +1,30 @@
+version: "3.8"
+
+services:
+  web:
+    build: ./app
+    ports:
+      - "5000:5000"
+    environment:
+      - FLASK_ENV=development
+    volumes:
+      - ./app:/app
+    depends_on:
+      - redis
+      - celery
+
+  celery:
+    build: ./celery
+    depends_on:
+      - redis
+    environment:
+      - CELERY_BROKER_URL=redis://redis:6379/0
+      - CELERY_RESULT_BACKEND=redis://redis:6379/0
+    volumes:
+      - ./celery:/celery
+
+  redis:
+    image: "redis:alpine"
+
+  ffmpeg:
+    image: jrottenberg/ffmpeg

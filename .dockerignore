@@ -1,0 +1,41 @@
+# Python
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+*.py[cod]
+
+# Virtual environments
+venv/
+
+# Git
+.git
+.gitignore
+
+# Docker
+.dockerignore
+Dockerfile
+
+# Logs
+*.log
+
+# Unit test / coverage reports
+.tox/
+.nox/
+.pytest_cache/
+.coverage
+.coverage.*
+.cache
+pytest_cache/
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+
+# Environments
+.env
+.venv
+
+# Flask specific
+instance/
+.webassets-cache
+
