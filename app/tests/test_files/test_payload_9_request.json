@@ -1,0 +1,13 @@
+{
+  "profile": {
+    "user": {
+      "username": "testuser",
+      "preferences": [
+        {
+          "preference_name": "color",
+          "preference_value": "blue"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,1386 @@
+[
+	{
+		"name": "prompt",
+		"type": "text",
+		"label": "Prompt",
+		"multiline": true,
+		"default": "",
+		"required": true 
+	},
+	{
+		"name": "webhook_url",
+		"type": "url",
+		"label": "Webhook URL",
+		"required": true,
+		"default": ""
+	},
+	{
+		"name": "image_number",
+		"type": "number",
+		"label": "Number of Images",
+		"required": true,
+		"default": 1
+	},
+	{
+		"name": "negative_prompt",
+		"type": "text",
+		"label": "Negative Prompt",
+		"required": false
+	},
+	{
+		"name": "performance_selection",
+		"type": "select",
+		"multiple": false,
+		"label": "Performance Selection",
+		"required": true,
+		"default": "Speed",
+		"options": [
+			{
+				"value": "Speed",
+				"label": "Speed"
+ 			},
+			{
+				"value": "Quality",
+				"label": "Quality"
+ 			},
+			{
+				"value": "Extreme Speed",
+				"label": "Extreme Speed"
+ 			}
+		]
+	},
+	{
+		"name": "save_extension",
+		"type": "select",
+		"multiple": false,
+		"label": "Image File Type",
+		"required": true,
+		"default": "jpg",
+		"options": [
+			{
+				"value": "jpg",
+				"label": "jpg"
+ 			},
+			{
+				"value": "png",
+				"label": "png"
+ 			},
+			{
+				"value": "webp",
+				"label": "webp"
+ 			}
+		]
+	},
+	{
+		"name": "aspect_ratios_selection",
+		"type": "select",
+		"label": "Aspect Ratio",
+		"default": "1152*896",
+		"required": true,
+		"options": [
+			{
+				"value": "1920*1080",
+				"label": "1920x1080 (16:9)"
+			},
+			{
+				"value": "704*1344",
+				"label": "704x1344 (11:21) TikTok & Instagram"
+			},
+			{
+				"value": "768*1344",
+				"label": "768x1344 (4:7)"
+			},
+			{
+				"value": "768*1280",
+				"label": "768x1280 (3:5)"
+			},
+			{
+				"value": "832*1216",
+				"label": "832x1216 (13:19)"
+			},
+			{
+				"value": "832*1152",
+				"label": "832x1152 (13:18)"
+			},
+			{
+				"value": "896*1152",
+				"label": "896x1152 (7:9)"
+			},
+			{
+				"value": "896*1088",
+				"label": "896x1088 (14:17)"
+			},
+			{
+				"value": "960*1088",
+				"label": "960x1088 (15:17)"
+			},
+			{
+				"value": "960*1024",
+				"label": "960x1024 (15:16)"
+			},
+			{
+				"value": "1024*1024",
+				"label": "1024x1024 (1:1)"
+			},
+			{
+				"value": "1024*960",
+				"label": "1024x960 (16:15)"
+			},
+			{
+				"value": "1088*960",
+				"label": "1088x960 (17:15)"
+			},
+			{
+				"value": "1088*896",
+				"label": "1088x896 (17:14)"
+			},
+			{
+				"value": "1152*896",
+				"label": "1152x896 (9:7) Youtube"
+			},
+			{
+				"value": "1152*832",
+				"label": "1152x832 (18:13)"
+			},
+			{
+				"value": "1216*832",
+				"label": "1216x832 (19:13)"
+			},
+			{
+				"value": "1280*768",
+				"label": "1280x768 (5:3)"
+			},
+			{
+				"value": "1344*768",
+				"label": "1344x768 (7:4)"
+			},
+			{
+				"value": "1344*704",
+				"label": "1344x704 (21:11)"
+			},
+			{
+				"value": "1408*704",
+				"label": "1408x704 (2:1)"
+			},
+			{
+				"value": "1472*704",
+				"label": "1472x704 (23:11)"
+			},
+			{
+				"value": "1536*640",
+				"label": "1536x640 (12:5)"
+			},
+			{
+				"value": "1600*640",
+				"label": "1600x640 (5:2)"
+			},
+			{
+				"value": "1664*576",
+				"label": "1664x576 (26:9)"
+			},
+			{
+				"value": "1728*576",
+				"label": "1728x576 (3:1)"
+			}
+		]
+    },
+	{
+		"name": "async_process",
+		"type": "boolean",
+		"label": "Asynchronous",
+		"default": "true",
+		"help": "Yes, returns immediately. No waits for image processing.",
+		"required": true 
+	},
+	{
+		"name": "styles_collection",
+		"type": "collection",
+		"label": "Styles (order matters)",
+		"spec": [
+			{
+				"name": "style_selection_1",
+				"type": "select",
+				"multiple": false,
+				"label": "Style Selection 1",
+				"required": false,
+				"grouped": true,
+				"default": "",
+				"options": [
+					{
+						"label": "Foocus Styles",
+						"options": [
+							{
+								"value": "Fooocus V2",
+								"label": "Fooocus V2"
+							},
+							{
+								"value": "Fooocus Enhance",
+								"label": "Fooocus Enhance"
+							},
+							{
+								"value": "Fooocus Sharp",
+								"label": "Fooocus Sharp"
+							},
+							{
+								"value": "Fooocus Semi Realistic",
+								"label": "Fooocus Semi Realistic"
+							},
+							{
+								"value": "Fooocus Masterpiece",
+								"label": "Fooocus Masterpiece"
+							},
+							{
+								"value": "Fooocus Photograph",
+								"label": "Fooocus Photograph"
+							},
+							{
+								"value": "Fooocus Negative",
+								"label": "Fooocus Negative"
+							},
+							{
+								"value": "Fooocus Cinematic",
+								"label": "Fooocus Cinematic"
+							}
+						]
+					},
+					{
+						"label": "Stability AI Styles",
+						"options": [
+							{
+								"value": "SAI 3D Model",
+								"label": "SAI 3D Model"
+							},
+							{
+								"value": "SAI Analog Film",
+								"label": "SAI Analog Film"
+							},
+							{
+								"value": "SAI Anime",
+								"label": "SAI Anime"
+							},
+							{
+								"value": "SAI Cinematic",
+								"label": "SAI Cinematic"
+							},
+							{
+								"value": "SAI Comic Book",
+								"label": "SAI Comic Book"
+							},
+							{
+								"value": "SAI Craft Clay",
+								"label": "SAI Craft Clay"
+							},
+							{
+								"value": "SAI Digital Art",
+								"label": "SAI Digital Art"
+							},
+							{
+								"value": "SAI Enhance",
+								"label": "SAI Enhance"
+							},
+							{
+								"value": "SAI Fantasy Art",
+								"label": "SAI Fantasy Art"
+							},
+							{
+								"value": "SAI Isometric",
+								"label": "SAI Isometric"
+							},
+							{
+								"value": "SAI Line Art",
+								"label": "SAI Line Art"
+							},
+							{
+								"value": "SAI Lowpoly",
+								"label": "SAI Lowpoly"
+							},
+							{
+								"value": "SAI Neonpunk",
+								"label": "SAI Neonpunk"
+							},
+							{
+								"value": "SAI Origami",
+								"label": "SAI Origami"
+							},
+							{
+								"value": "SAI Photographic",
+								"label": "SAI Photographic"
+							},
+							{
+								"value": "SAI Pixel Art",
+								"label": "SAI Pixel Art"
+							},
+							{
+								"value": "SAI Texture",
+								"label": "SAI Texture"
+							}
+						]
+					},
+					{
+						"label": "Moonride Edition Styles",
+						"options": [
+							{
+								"value": "MRE Cinematic Dynamic",
+								"label": "MRE Cinematic Dynamic"
+							},
+							{
+								"value": "MRE Spontaneous Picture",
+								"label": "MRE Spontaneous Picture"
+							},
+							{
+								"value": "MRE Artistic Vision",
+								"label": "MRE Artistic Vision"
+							},
+							{
+								"value": "MRE Dark Dream",
+								"label": "MRE Dark Dream"
+							},
+							{
+								"value": "MRE Gloomy Art",
+								"label": "MRE Gloomy Art"
+							},
+							{
+								"value": "MRE Bad Dream",
+								"label": "MRE Bad Dream"
+							},
+							{
+								"value": "MRE Underground",
+								"label": "MRE Underground"
+							},
+							{
+								"value": "MRE Surreal Painting",
+								"label": "MRE Surreal Painting"
+							},
+							{
+								"value": "MRE Dynamic Illustration",
+								"label": "MRE Dynamic Illustration"
+							},
+							{
+								"value": "MRE Undead Art",
+								"label": "MRE Undead Art"
+							},
+							{
+								"value": "MRE Elemental Art",
+								"label": "MRE Elemental Art"
+							},
+							{
+								"value": "MRE Space Art",
+								"label": "MRE Space Art"
+							},
+							{
+								"value": "MRE Ancient Illustration",
+								"label": "MRE Ancient Illustration"
+							},
+							{
+								"value": "MRE Brave Art",
+								"label": "MRE Brave Art"
+							},
+							{
+								"value": "MRE Heroic Fantasy",
+								"label": "MRE Heroic Fantasy"
+							},
+							{
+								"value": "MRE Dark Cyberpunk",
+								"label": "MRE Dark Cyberpunk"
+							},
+							{
+								"value": "MRE Lyrical Geometry",
+								"label": "MRE Lyrical Geometry"
+							},
+							{
+								"value": "MRE Sumi E Symbolic",
+								"label": "MRE Sumi E Symbolic"
+							},
+							{
+								"value": "MRE Sumi E Detailed",
+								"label": "MRE Sumi E Detailed"
+							},
+							{
+								"value": "MRE Manga",
+								"label": "MRE Manga"
+							},
+							{
+								"value": "MRE Anime",
+								"label": "MRE Anime"
+							},
+							{
+								"value": "MRE Comic",
+								"label": "MRE Comic"
+							}
+						]
+					},
+					{
+						"label": "Ads Styles",
+						"options": [
+							{
+								"value": "Ads Advertising",
+								"label": "Ads Advertising"
+							},
+							{
+								"value": "Ads Automotive",
+								"label": "Ads Automotive"
+							},
+							{
+								"value": "Ads Corporate",
+								"label": "Ads Corporate"
+							},
+							{
+								"value": "Ads Fashion Editorial",
+								"label": "Ads Fashion Editorial"
+							},
+							{
+								"value": "Ads Food Photography",
+								"label": "Ads Food Photography"
+							},
+							{
+								"value": "Ads Gourmet Food Photography",
+								"label": "Ads Gourmet Food Photography"
+							},
+							{
+								"value": "Ads Luxury",
+								"label": "Ads Luxury"
+							},
+							{
+								"value": "Ads Real Estate",
+								"label": "Ads Real Estate"
+							},
+							{
+								"value": "Ads Retail",
+								"label": "Ads Retail"
+							}
+						]
+					},
+					{
+						"label": "Artstyle Styles",
+						"options": [
+							{
+								"value": "Artstyle Abstract",
+								"label": "Artstyle Abstract"
+							},
+							{
+								"value": "Artstyle Abstract Expressionism",
+								"label": "Artstyle Abstract Expressionism"
+							},
+							{
+								"value": "Artstyle Art Deco",
+								"label": "Artstyle Art Deco"
+							},
+							{
+								"value": "Artstyle Art Nouveau",
+								"label": "Artstyle Art Nouveau"
+							},
+							{
+								"value": "Artstyle Constructivist",
+								"label": "Artstyle Constructivist"
+							},
+							{
+								"value": "Artstyle Cubist",
+								"label": "Artstyle Cubist"
+							},
+							{
+								"value": "Artstyle Expressionist",
+								"label": "Artstyle Expressionist"
+							},
+							{
+								"value": "Artstyle Graffiti",
+								"label": "Artstyle Graffiti"
+							},
+							{
+								"value": "Artstyle Hyperrealism",
+								"label": "Artstyle Hyperrealism"
+							},
+							{
+								"value": "Artstyle Impressionist",
+								"label": "Artstyle Impressionist"
+							},
+							{
+								"value": "Artstyle Pointillism",
+								"label": "Artstyle Pointillism"
+							},
+							{
+								"value": "Artstyle Pop Art",
+								"label": "Artstyle Pop Art"
+							},
+							{
+								"value": "Artstyle Psychedelic",
+								"label": "Artstyle Psychedelic"
+							},
+							{
+								"value": "Artstyle Renaissance",
+								"label": "Artstyle Renaissance"
+							},
+							{
+								"value": "Artstyle Steampunk",
+								"label": "Artstyle Steampunk"
+							},
+							{
+								"value": "Artstyle Surrealist",
+								"label": "Artstyle Surrealist"
+							},
+							{
+								"value": "Artstyle Typography",
+								"label": "Artstyle Typography"
+							},
+							{
+								"value": "Artstyle Watercolor",
+								"label": "Artstyle Watercolor"
+							}
+						]
+					},
+					{
+						"label": "Futuristic Styles",
+						"options": [
+							{
+								"value": "Futuristic Biomechanical",
+								"label": "Futuristic Biomechanical"
+							},
+							{
+								"value": "Futuristic Biomechanical Cyberpunk",
+								"label": "Futuristic Biomechanical Cyberpunk"
+							},
+							{
+								"value": "Futuristic Cybernetic",
+								"label": "Futuristic Cybernetic"
+							},
+							{
+								"value": "Futuristic Cybernetic Robot",
+								"label": "Futuristic Cybernetic Robot"
+							},
+							{
+								"value": "Futuristic Cyberpunk Cityscape",
+								"label": "Futuristic Cyberpunk Cityscape"
+							},
+							{
+								"value": "Futuristic Futuristic",
+								"label": "Futuristic Futuristic"
+							},
+							{
+								"value": "Futuristic Retro Cyberpunk",
+								"label": "Futuristic Retro Cyberpunk"
+							},
+							{
+								"value": "Futuristic Retro Futurism",
+								"label": "Futuristic Retro Futurism"
+							},
+							{
+								"value": "Futuristic Sci Fi",
+								"label": "Futuristic Sci Fi"
+							},
+							{
+								"value": "Futuristic Vaporwave",
+								"label": "Futuristic Vaporwave"
+							}
+						]
+					},
+					{
+						"label": "Game Styles",
+						"options": [
+							{
+								"value": "Game Bubble Bobble",
+								"label": "Game Bubble Bobble"
+							},
+							{
+								"value": "Game Cyberpunk Game",
+								"label": "Game Cyberpunk Game"
+							},
+							{
+								"value": "Game Fighting Game",
+								"label": "Game Fighting Game"
+							},
+							{
+								"value": "Game Gta",
+								"label": "Game Gta"
+							},
+							{
+								"value": "Game Mario",
+								"label": "Game Mario"
+							},
+							{
+								"value": "Game Minecraft",
+								"label": "Game Minecraft"
+							},
+							{
+								"value": "Game Pokemon",
+								"label": "Game Pokemon"
+							},
+							{
+								"value": "Game Retro Arcade",
+								"label": "Game Retro Arcade"
+							},
+							{
+								"value": "Game Retro Game",
+								"label": "Game Retro Game"
+							},
+							{
+								"value": "Game Rpg Fantasy Game",
+								"label": "Game Rpg Fantasy Game"
+							},
+							{
+								"value": "Game Strategy Game",
+								"label": "Game Strategy Game"
+							},
+							{
+								"value": "Game Streetfighter",
+								"label": "Game Streetfighter"
+							},
+							{
+								"value": "Game Zelda",
+								"label": "Game Zelda"
+							}
+						]
+					},
+					{
+						"label": "Misc Styles",
+						"options": [
+							{
+								"value": "Misc Architectural",
+								"label": "Misc Architectural"
+							},
+							{
+								"value": "Misc Disco",
+								"label": "Misc Disco"
+							},
+							{
+								"value": "Misc Dreamscape",
+								"label": "Misc Dreamscape"
+							},
+							{
+								"value": "Misc Dystopian",
+								"label": "Misc Dystopian"
+							},
+							{
+								"value": "Misc Fairy Tale",
+								"label": "Misc Fairy Tale"
+							},
+							{
+								"value": "Misc Gothic",
+								"label": "Misc Gothic"
+							},
+							{
+								"value": "Misc Grunge",
+								"label": "Misc Grunge"
+							},
+							{
+								"value": "Misc Horror",
+								"label": "Misc Horror"
+							},
+							{
+								"value": "Misc Kawaii",
+								"label": "Misc Kawaii"
+							},
+							{
+								"value": "Misc Lovecraftian",
+								"label": "Misc Lovecraftian"
+							},
+							{
+								"value": "Misc Macabre",
+								"label": "Misc Macabre"
+							},
+							{
+								"value": "Misc Manga",
+								"label": "Misc Manga"
+							},
+							{
+								"value": "Misc Metropolis",
+								"label": "Misc Metropolis"
+							},
+							{
+								"value": "Misc Minimalist",
+								"label": "Misc Minimalist"
+							},
+							{
+								"value": "Misc Monochrome",
+								"label": "Misc Monochrome"
+							},
+							{
+								"value": "Misc Nautical",
+								"label": "Misc Nautical"
+							},
+							{
+								"value": "Misc Space",
+								"label": "Misc Space"
+							},
+							{
+								"value": "Misc Stained Glass",
+								"label": "Misc Stained Glass"
+							},
+							{
+								"value": "Misc Techwear Fashion",
+								"label": "Misc Techwear Fashion"
+							},
+							{
+								"value": "Misc Tribal",
+								"label": "Misc Tribal"
+							},
+							{
+								"value": "Misc Zentangle",
+								"label": "Misc Zentangle"
+							}
+											]
+					},
+					{
+						"label": "Papercraft Styles",
+						"options": [
+
+							{
+								"value": "Papercraft Collage",
+								"label": "Papercraft Collage"
+							},
+							{
+								"value": "Papercraft Flat Papercut",
+								"label": "Papercraft Flat Papercut"
+							},
+							{
+								"value": "Papercraft Kirigami",
+								"label": "Papercraft Kirigami"
+							},
+							{
+								"value": "Papercraft Paper Mache",
+								"label": "Papercraft Paper Mache"
+							},
+							{
+								"value": "Papercraft Paper Quilling",
+								"label": "Papercraft Paper Quilling"
+							},
+							{
+								"value": "Papercraft Papercut Collage",
+								"label": "Papercraft Papercut Collage"
+							},
+							{
+								"value": "Papercraft Papercut Shadow Box",
+								"label": "Papercraft Papercut Shadow Box"
+							},
+							{
+								"value": "Papercraft Stacked Papercut",
+								"label": "Papercraft Stacked Papercut"
+							},
+							{
+								"value": "Papercraft Thick Layered Papercut",
+								"label": "Papercraft Thick Layered Papercut"
+							}
+						]
+					},
+					{
+						"label": "Photo Styles",
+						"options": [
+							{
+								"value": "Photo Alien",
+								"label": "Photo Alien"
+							},
+							{
+								"value": "Photo Film Noir",
+								"label": "Photo Film Noir"
+							},
+							{
+								"value": "Photo Glamour",
+								"label": "Photo Glamour"
+							},
+							{
+								"value": "Photo Hdr",
+								"label": "Photo Hdr"
+							},
+							{
+								"value": "Photo Iphone Photographic",
+								"label": "Photo Iphone Photographic"
+							},
+							{
+								"value": "Photo Long Exposure",
+								"label": "Photo Long Exposure"
+							},
+							{
+								"value": "Photo Neon Noir",
+								"label": "Photo Neon Noir"
+							},
+							{
+								"value": "Photo Silhouette",
+								"label": "Photo Silhouette"
+							},
+							{
+								"value": "Photo Tilt Shift",
+								"label": "Photo Tilt Shift"
+							},
+							{
+								"value": "Cinematic Diva",
+								"label": "Cinematic Diva"
+							}
+						]
+					},
+					{
+						"label": "Other Styles",
+						"options": [
+							{
+								"value": "Abstract Expressionism",
+								"label": "Abstract Expressionism"
+							},
+							{
+								"value": "Random Style",
+								"label": "Random Style"
+							},
+							{
+								"value": "Academia",
+								"label": "Academia"
+							},
+							{
+								"value": "Action Figure",
+								"label": "Action Figure"
+							},
+							{
+								"value": "Adorable 3D Character",
+								"label": "Adorable 3D Character"
+							},
+							{
+								"value": "Adorable Kawaii",
+								"label": "Adorable Kawaii"
+							},
+							{
+								"value": "Art Deco",
+								"label": "Art Deco"
+							},
+							{
+								"value": "Art Nouveau",
+								"label": "Art Nouveau"
+							},
+							{
+								"value": "Astral Aura",
+								"label": "Astral Aura"
+							},
+							{
+								"value": "Avant Garde",
+								"label": "Avant Garde"
+							},
+							{
+								"value": "Baroque",
+								"label": "Baroque"
+							},
+							{
+								"value": "Bauhaus Style Poster",
+								"label": "Bauhaus Style Poster"
+							},
+							{
+								"value": "Blueprint Schematic Drawing",
+								"label": "Blueprint Schematic Drawing"
+							},
+							{
+								"value": "Caricature",
+								"label": "Caricature"
+							},
+							{
+								"value": "Cel Shaded Art",
+								"label": "Cel Shaded Art"
+							},
+							{
+								"value": "Character Design Sheet",
+								"label": "Character Design Sheet"
+							},
+							{
+								"value": "Classicism Art",
+								"label": "Classicism Art"
+							},
+							{
+								"value": "Color Field Painting",
+								"label": "Color Field Painting"
+							},
+							{
+								"value": "Colored Pencil Art",
+								"label": "Colored Pencil Art"
+							},
+							{
+								"value": "Conceptual Art",
+								"label": "Conceptual Art"
+							},
+							{
+								"value": "Constructivism",
+								"label": "Constructivism"
+							},
+							{
+								"value": "Cubism",
+								"label": "Cubism"
+							},
+							{
+								"value": "Dadaism",
+								"label": "Dadaism"
+							},
+							{
+								"value": "Dark Fantasy",
+								"label": "Dark Fantasy"
+							},
+							{
+								"value": "Dark Moody Atmosphere",
+								"label": "Dark Moody Atmosphere"
+							},
+							{
+								"value": "Dmt Art Style",
+								"label": "Dmt Art Style"
+							},
+							{
+								"value": "Doodle Art",
+								"label": "Doodle Art"
+							},
+							{
+								"value": "Double Exposure",
+								"label": "Double Exposure"
+							},
+							{
+								"value": "Dripping Paint Splatter Art",
+								"label": "Dripping Paint Splatter Art"
+							},
+							{
+								"value": "Expressionism",
+								"label": "Expressionism"
+							},
+							{
+								"value": "Faded Polaroid Photo",
+								"label": "Faded Polaroid Photo"
+							},
+							{
+								"value": "Fauvism",
+								"label": "Fauvism"
+							},
+							{
+								"value": "Flat 2d Art",
+								"label": "Flat 2d Art"
+							},
+							{
+								"value": "Fortnite Art Style",
+								"label": "Fortnite Art Style"
+							},
+							{
+								"value": "Futurism",
+								"label": "Futurism"
+							},
+							{
+								"value": "Glitchcore",
+								"label": "Glitchcore"
+							},
+							{
+								"value": "Glo Fi",
+								"label": "Glo Fi"
+							},
+							{
+								"value": "Googie Art Style",
+								"label": "Googie Art Style"
+							},
+							{
+								"value": "Graffiti Art",
+								"label": "Graffiti Art"
+							},
+							{
+								"value": "Harlem Renaissance Art",
+								"label": "Harlem Renaissance Art"
+							},
+							{
+								"value": "High Fashion",
+								"label": "High Fashion"
+							},
+							{
+								"value": "Idyllic",
+								"label": "Idyllic"
+							},
+							{
+								"value": "Impressionism",
+								"label": "Impressionism"
+							},
+							{
+								"value": "Infographic Drawing",
+								"label": "Infographic Drawing"
+							},
+							{
+								"value": "Ink Dripping Drawing",
+								"label": "Ink Dripping Drawing"
+							},
+							{
+								"value": "Japanese Ink Drawing",
+								"label": "Japanese Ink Drawing"
+							},
+							{
+								"value": "Knolling Photography",
+								"label": "Knolling Photography"
+							},
+							{
+								"value": "Light Cheery Atmosphere",
+								"label": "Light Cheery Atmosphere"
+							},
+							{
+								"value": "Logo Design",
+								"label": "Logo Design"
+							},
+							{
+								"value": "Luxurious Elegance",
+								"label": "Luxurious Elegance"
+							},
+							{
+								"value": "Macro Photography",
+								"label": "Macro Photography"
+							},
+							{
+								"value": "Mandola Art",
+								"label": "Mandola Art"
+							},
+							{
+								"value": "Marker Drawing",
+								"label": "Marker Drawing"
+							},
+							{
+								"value": "Medievalism",
+								"label": "Medievalism"
+							},
+							{
+								"value": "Minimalism",
+								"label": "Minimalism"
+							},
+							{
+								"value": "Neo Baroque",
+								"label": "Neo Baroque"
+							},
+							{
+								"value": "Neo Byzantine",
+								"label": "Neo Byzantine"
+							},
+							{
+								"value": "Neo Futurism",
+								"label": "Neo Futurism"
+							},
+							{
+								"value": "Neo Impressionism",
+								"label": "Neo Impressionism"
+							},
+							{
+								"value": "Neo Rococo",
+								"label": "Neo Rococo"
+							},
+							{
+								"value": "Neoclassicism",
+								"label": "Neoclassicism"
+							},
+							{
+								"value": "Op Art",
+								"label": "Op Art"
+							},
+							{
+								"value": "Ornate And Intricate",
+								"label": "Ornate And Intricate"
+							},
+							{
+								"value": "Pencil Sketch Drawing",
+								"label": "Pencil Sketch Drawing"
+							},
+							{
+								"value": "Pop Art 2",
+								"label": "Pop Art 2"
+							},
+							{
+								"value": "Rococo",
+								"label": "Rococo"
+							},
+							{
+								"value": "Silhouette Art",
+								"label": "Silhouette Art"
+							},
+							{
+								"value": "Simple Vector Art",
+								"label": "Simple Vector Art"
+							},
+							{
+								"value": "Sketchup",
+								"label": "Sketchup"
+							},
+							{
+								"value": "Steampunk 2",
+								"label": "Steampunk 2"
+							},
+							{
+								"value": "Surrealism",
+								"label": "Surrealism"
+							},
+							{
+								"value": "Suprematism",
+								"label": "Suprematism"
+							},
+							{
+								"value": "Terragen",
+								"label": "Terragen"
+							},
+							{
+								"value": "Tranquil Relaxing Atmosphere",
+								"label": "Tranquil Relaxing Atmosphere"
+							},
+							{
+								"value": "Sticker Designs",
+								"label": "Sticker Designs"
+							},
+							{
+								"value": "Vibrant Rim Light",
+								"label": "Vibrant Rim Light"
+							},
+							{
+								"value": "Volumetric Lighting",
+								"label": "Volumetric Lighting"
+							},
+							{
+								"value": "Watercolor 2",
+								"label": "Watercolor 2"
+							},
+							{
+								"value": "Whimsical And Playful",
+								"label": "Whimsical And Playful"
+							}
+						]
+					},
+					{
+						"label": "Mk Styles",
+						"options": [
+							{
+								"value": "Mk Chromolithography",
+								"label": "Mk Chromolithography"
+							},
+							{
+								"value": "Mk Cross Processing Print",
+								"label": "Mk Cross Processing Print"
+							},
+							{
+								"value": "Mk Dufaycolor Photograph",
+								"label": "Mk Dufaycolor Photograph"
+							},
+							{
+								"value": "Mk Herbarium",
+								"label": "Mk Herbarium"
+							},
+							{
+								"value": "Mk Punk Collage",
+								"label": "Mk Punk Collage"
+							},
+							{
+								"value": "Mk Mosaic",
+								"label": "Mk Mosaic"
+							},
+							{
+								"value": "Mk Van Gogh",
+								"label": "Mk Van Gogh"
+							},
+							{
+								"value": "Mk Coloring Book",
+								"label": "Mk Coloring Book"
+							},
+							{
+								"value": "Mk Singer Sargent",
+								"label": "Mk Singer Sargent"
+							},
+							{
+								"value": "Mk Pollock",
+								"label": "Mk Pollock"
+							},
+							{
+								"value": "Mk Basquiat",
+								"label": "Mk Basquiat"
+							},
+							{
+								"value": "Mk Andy Warhol",
+								"label": "Mk Andy Warhol"
+							},
+							{
+								"value": "Mk Halftone Print",
+								"label": "Mk Halftone Print"
+							},
+							{
+								"value": "Mk Gond Painting",
+								"label": "Mk Gond Painting"
+							},
+							{
+								"value": "Mk Albumen Print",
+								"label": "Mk Albumen Print"
+							},
+							{
+								"value": "Mk Aquatint Print",
+								"label": "Mk Aquatint Print"
+							},
+							{
+								"value": "Mk Anthotype Print",
+								"label": "Mk Anthotype Print"
+							},
+							{
+								"value": "Mk Inuit Carving",
+								"label": "Mk Inuit Carving"
+							},
+							{
+								"value": "Mk Bromoil Print",
+								"label": "Mk Bromoil Print"
+							},
+							{
+								"value": "Mk Calotype Print",
+								"label": "Mk Calotype Print"
+							},
+							{
+								"value": "Mk Color Sketchnote",
+								"label": "Mk Color Sketchnote"
+							},
+							{
+								"value": "Mk Cibulak Porcelain",
+								"label": "Mk Cibulak Porcelain"
+							},
+							{
+								"value": "Mk Alcohol Ink Art",
+								"label": "Mk Alcohol Ink Art"
+							},
+							{
+								"value": "Mk One Line Art",
+								"label": "Mk One Line Art"
+							},
+							{
+								"value": "Mk Blacklight Paint",
+								"label": "Mk Blacklight Paint"
+							},
+							{
+								"value": "Mk Carnival Glass",
+								"label": "Mk Carnival Glass"
+							},
+							{
+								"value": "Mk Cyanotype Print",
+								"label": "Mk Cyanotype Print"
+							},
+							{
+								"value": "Mk Cross Stitching",
+								"label": "Mk Cross Stitching"
+							},
+							{
+								"value": "Mk Encaustic Paint",
+								"label": "Mk Encaustic Paint"
+							},
+							{
+								"value": "Mk Embroidery",
+								"label": "Mk Embroidery"
+							},
+							{
+								"value": "Mk Gyotaku",
+								"label": "Mk Gyotaku"
+							},
+							{
+								"value": "Mk Luminogram",
+								"label": "Mk Luminogram"
+							},
+							{
+								"value": "Mk Lite Brite Art",
+								"label": "Mk Lite Brite Art"
+							},
+							{
+								"value": "Mk Mokume Gane",
+								"label": "Mk Mokume Gane"
+							},
+							{
+								"value": "Pebble Art",
+								"label": "Pebble Art"
+							},
+							{
+								"value": "Mk Palekh",
+								"label": "Mk Palekh"
+							},
+							{
+								"value": "Mk Suminagashi",
+								"label": "Mk Suminagashi"
+							},
+							{
+								"value": "Mk Scrimshaw",
+								"label": "Mk Scrimshaw"
+							},
+							{
+								"value": "Mk Shibori",
+								"label": "Mk Shibori"
+							},
+							{
+								"value": "Mk Vitreous Enamel",
+								"label": "Mk Vitreous Enamel"
+							},
+							{
+								"value": "Mk Ukiyo E",
+								"label": "Mk Ukiyo E"
+							},
+							{
+								"value": "Mk Vintage Airline Poster",
+								"label": "Mk Vintage Airline Poster"
+							},
+							{
+								"value": "Mk Vintage Travel Poster",
+								"label": "Mk Vintage Travel Poster"
+							},
+							{
+								"value": "Mk Bauhaus Style",
+								"label": "Mk Bauhaus Style"
+							},
+							{
+								"value": "Mk Afrofuturism",
+								"label": "Mk Afrofuturism"
+							},
+							{
+								"value": "Mk Atompunk",
+								"label": "Mk Atompunk"
+							},
+							{
+								"value": "Mk Constructivism",
+								"label": "Mk Constructivism"
+							},
+							{
+								"value": "Mk Chicano Art",
+								"label": "Mk Chicano Art"
+							},
+							{
+								"value": "Mk De Stijl",
+								"label": "Mk De Stijl"
+							},
+							{
+								"value": "Mk Dayak Art",
+								"label": "Mk Dayak Art"
+							},
+							{
+								"value": "Mk Fayum Portrait",
+								"label": "Mk Fayum Portrait"
+							},
+							{
+								"value": "Mk Illuminated Manuscript",
+								"label": "Mk Illuminated Manuscript"
+							},
+							{
+								"value": "Mk Kalighat Painting",
+								"label": "Mk Kalighat Painting"
+							},
+							{
+								"value": "Mk Madhubani Painting",
+								"label": "Mk Madhubani Painting"
+							},
+							{
+								"value": "Mk Pictorialism",
+								"label": "Mk Pictorialism"
+							},
+							{
+								"value": "Mk Pichwai Painting",
+								"label": "Mk Pichwai Painting"
+							},
+							{
+								"value": "Mk Patachitra Painting",
+								"label": "Mk Patachitra Painting"
+							},
+							{
+								"value": "Mk Samoan Art Inspired",
+								"label": "Mk Samoan Art Inspired"
+							},
+							{
+								"value": "Mk Tlingit Art",
+								"label": "Mk Tlingit Art"
+							},
+							{
+								"value": "Mk Adnate Style",
+								"label": "Mk Adnate Style"
+							},
+							{
+								"value": "Mk Ron English Style",
+								"label": "Mk Ron English Style"
+							},
+							{
+								"value": "Mk Shepard Fairey Style",
+								"label": "Mk Shepard Fairey Style"
+							}
+						]
+					}
+				]
+			}
+		]
+	}	
+]

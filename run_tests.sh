@@ -61,18 +61,18 @@ sleep 2
 echo "Running tests inside the container..."
 if [ "$COVERAGE" == true ]; then
   if [ "$HTML_REPORT" == true ] && [ "$TERM_REPORT" == true ]; then
-    docker-compose exec web sh -c "PYTHONPATH=/app pytest -s --cov=/app --cov-report html --cov-report term"
+    docker-compose exec web sh -c "PYTHONPATH=/app pytest -s -v --cov=/app --cov-report html --cov-report term"
     docker cp web:/app/htmlcov ./htmlcov
   elif [ "$HTML_REPORT" == true ]; then
-    docker-compose exec web sh -c "PYTHONPATH=/app pytest -s --cov=/app --cov-report html"
+    docker-compose exec web sh -c "PYTHONPATH=/app pytest -s -v --cov=/app --cov-report html"
     docker cp web:/app/htmlcov ./htmlcov
   elif [ "$TERM_REPORT" == true ]; then
-    docker-compose exec web sh -c "PYTHONPATH=/app pytest -s --cov=/app --cov-report term"
+    docker-compose exec web sh -c "PYTHONPATH=/app pytest -s -v --cov=/app --cov-report term"
   else
-    docker-compose exec web sh -c "PYTHONPATH=/app pytest -s --cov=/app"
+    docker-compose exec web sh -c "PYTHONPATH=/app pytest -s -v --cov=/app"
   fi
 else
-  docker-compose exec web sh -c "PYTHONPATH=/app pytest -s"
+  docker-compose exec web sh -c "PYTHONPATH=/app pytest -s -v"
 fi
 
 # Capture the exit status of pytest
