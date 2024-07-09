@@ -9,6 +9,9 @@
 [Your project's getting started guide]
 
 ## Running the Application
+### docker-compose
+- `docker-compose build`
+- `docker-compose up`
 
 [Instructions on running the application]
 
