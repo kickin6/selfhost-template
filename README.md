@@ -11,6 +11,8 @@
 ## Running the Application
 ### docker-compose
 - Clone this repository.
+- Add any additional applications in sub-directories.
+- Update the docker-compose.yml file if necessary.
 - `docker-compose build`
 - `docker-compose up`
 
