@@ -3,28 +3,57 @@ version: "3.8"
 services:
   web:
     build: ./app
+    container_name: web
     ports:
       - "5000:5000"
     environment:
       - FLASK_ENV=development
+      - FLASK_APP=main:create_app
+      - FLASK_CONFIG=config.DevelopmentConfig
+      - CELERY_BROKER_URL=redis://redis:6379/0
+      - CELERY_RESULT_BACKEND=redis://redis:6379/0
     volumes:
       - ./app:/app
+    networks:
+      - app-network
     depends_on:
       - redis
       - celery
 
   celery:
     build: ./celery
+    container_name: celery_worker
     depends_on:
       - redis
+      - ffmpeg
     environment:
       - CELERY_BROKER_URL=redis://redis:6379/0
       - CELERY_RESULT_BACKEND=redis://redis:6379/0
     volumes:
       - ./celery:/celery
+    networks:
+      - app-network
 
   redis:
-    image: "redis:alpine"
+    build:
+      context: ./redis
+      dockerfile: Dockerfile.redis
+    container_name: redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - ./redis.conf:/usr/local/etc/redis/redis.conf
+    command: ["redis-server", "/usr/local/etc/redis/redis.conf"]
+    networks:
+      - app-network
 
   ffmpeg:
-    image: jrottenberg/ffmpeg
+    image: jrottenberg/ffmpeg:latest
+    container_name: ffmpeg
+    entrypoint: ["sh", "-c", "while true; do sleep 30; done"]
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
