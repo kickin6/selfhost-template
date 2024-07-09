@@ -2,7 +2,9 @@ version: "3.8"
 
 services:
   web:
-    build: ./app
+    build:
+      context: ./app
+      dockerfile: Dockerfile
     container_name: web
     ports:
       - "5000:5000"
@@ -22,7 +24,9 @@ services:
       - celery
 
   celery:
-    build: ./celery
+    build:
+      context: .
+      dockerfile: ./celery/Dockerfile
     container_name: celery_worker
     depends_on:
       - redis
@@ -32,6 +36,8 @@ services:
       - OUTPUT_DIR=./output
     volumes:
       - ./celery:/celery
+      - ./app:/app
+    command: celery -A celery worker --loglevel=info
     networks:
       - app-network
 

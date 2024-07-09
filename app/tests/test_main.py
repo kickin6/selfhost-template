@@ -46,22 +46,17 @@ endpoints = get_endpoints_from_main()
 
 @pytest.mark.parametrize("endpoint", endpoints)
 def test_process_request_with_invalid_api_key(client, endpoint):
-    if endpoint == '/authenticate':
-        response = client.get(endpoint, headers={"x-api-key": "invalid_key"})
-        assert response.status_code == 403
-        assert response.get_json() == {"error": "Invalid API key"}
-    else:
-        response = client.post(endpoint, json={"some": "data"}, headers={"x-api-key": "invalid_key"})
-        assert response.status_code == 403
-        assert response.get_json() == {"error": "Invalid API key"}
+    response = client.post(endpoint, json={"some": "data"}, headers={"x-api-key": "invalid_key"})
+    assert response.status_code == 403
+    assert response.get_json() == {"error": "Invalid API key"}
 
 def test_authenticate_missing_api_key(client):
-    response = client.get("/authenticate")
+    response = client.get("/auth/authenticate")
     assert response.status_code == 400
     assert response.get_json() == {"error": "API key is missing"}
 
 def test_authenticate_invalid_api_key(client):
-    response = client.get("/authenticate", headers={"x-api-key": "invalid_key"})
+    response = client.get("/auth/authenticate", headers={"x-api-key": "invalid_key"})
     assert response.status_code == 403
     assert response.get_json() == {"error": "Invalid API key"}
 
