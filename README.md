@@ -10,10 +10,9 @@
 
 ## Running the Application
 ### docker-compose
+- Clone this repository.
 - `docker-compose build`
 - `docker-compose up`
-
-[Instructions on running the application]
 
 ## Documentation
 
