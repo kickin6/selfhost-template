@@ -1,7 +1,6 @@
 import os
 import ast
 import pytest
-import secrets
 import shutil
 from app.main import create_app
 from app.celery_app import celery, init_celery
@@ -47,20 +46,17 @@ endpoints = get_endpoints_from_main()
 
 @pytest.mark.parametrize("endpoint", endpoints)
 def test_process_request_with_invalid_api_key(client, endpoint):
-    if endpoint == '/authenticate':
-        pytest.skip("Skipping authenticate endpoint")
-
     response = client.post(endpoint, json={"some": "data"}, headers={"x-api-key": "invalid_key"})
     assert response.status_code == 403
     assert response.get_json() == {"error": "Invalid API key"}
 
 def test_authenticate_missing_api_key(client):
-    response = client.get("/authenticate")
+    response = client.get("/auth/authenticate")
     assert response.status_code == 400
     assert response.get_json() == {"error": "API key is missing"}
 
 def test_authenticate_invalid_api_key(client):
-    response = client.get("/authenticate", headers={"x-api-key": "invalid_key"})
+    response = client.get("/auth/authenticate", headers={"x-api-key": "invalid_key"})
     assert response.status_code == 403
     assert response.get_json() == {"error": "Invalid API key"}
 
@@ -73,7 +69,7 @@ def test_process_request_missing_field(client, endpoint):
     api_key_path = os.path.join(output_dir, 'test_key')
     os.makedirs(api_key_path, exist_ok=True)
     try:
-        schema = load_schema(endpoint, "request")
+        schema = load_schema(os.path.join('json_schemas', f'{endpoint.lstrip("/")}_request.json'))
         required_fields = [field for field in schema.get("required", [])]
 
         # Create a payload with all required fields except the last one
@@ -97,7 +93,7 @@ def test_process_request_invalid_json(client, endpoint):
     api_key_path = os.path.join(output_dir, 'test_key')
     os.makedirs(api_key_path, exist_ok=True)
     try:
-        schema = load_schema(endpoint, "request")
+        schema = load_schema(os.path.join('json_schemas', f'{endpoint.lstrip("/")}_request.json'))
         valid_payload = create_valid_payload(schema)
         valid_payload["input_url"] = "invalid_json"  # Add invalid field
 
@@ -121,13 +117,13 @@ def test_process_request_valid_response(client, endpoint):
     api_key_path = os.path.join(output_dir, 'test_key')
     os.makedirs(api_key_path, exist_ok=True)
     try:
-        schema = load_schema(endpoint, "request")
+        schema = load_schema(os.path.join('json_schemas', f'{endpoint.lstrip("/")}_request.json'))
         valid_payload = create_valid_payload(schema)
 
         rv = client.post(endpoint, json=valid_payload, headers={"x-api-key": "test_key"})
 
         assert rv.status_code == 202
-        response_schema = load_schema(endpoint, "response")
+        response_schema = load_schema(os.path.join('json_schemas', f'{endpoint.lstrip("/")}_response.json'))
         response_data = rv.get_json()
         errors = validate_response(response_schema, response_data)
         assert not errors, f"Response validation errors: {errors}"
