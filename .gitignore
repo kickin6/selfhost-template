@@ -1,5 +1,7 @@
 # Virtual environment
 venv/
+output/
+!output/.gitkeep
 
 # Python specific
 __pycache__/
