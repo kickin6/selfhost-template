@@ -27,7 +27,10 @@ def create_app(config_class=None):
         if not api_key:
             return jsonify({"error": "API key is missing"}), 400
 
-        if os.path.isdir(f"./app/api_keys/{api_key}"):
+        output_dir = os.getenv('OUTPUT_DIR', './output')
+        api_key_path = os.path.join(output_dir, 'api_keys', api_key)
+        
+        if os.path.isdir(api_key_path):
             return jsonify({"message": "API key is valid"}), 200
         else:
             return jsonify({"error": "Invalid API key"}), 403

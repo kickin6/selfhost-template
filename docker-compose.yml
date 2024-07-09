@@ -12,6 +12,7 @@ services:
       - FLASK_CONFIG=config.DevelopmentConfig
       - CELERY_BROKER_URL=redis://redis:6379/0
       - CELERY_RESULT_BACKEND=redis://redis:6379/0
+      - OUTPUT_DIR=./output
     volumes:
       - ./app:/app
     networks:
@@ -25,10 +26,10 @@ services:
     container_name: celery_worker
     depends_on:
       - redis
-      - ffmpeg
     environment:
       - CELERY_BROKER_URL=redis://redis:6379/0
       - CELERY_RESULT_BACKEND=redis://redis:6379/0
+      - OUTPUT_DIR=./output
     volumes:
       - ./celery:/celery
     networks:
@@ -44,13 +45,6 @@ services:
     volumes:
       - ./redis.conf:/usr/local/etc/redis/redis.conf
     command: ["redis-server", "/usr/local/etc/redis/redis.conf"]
-    networks:
-      - app-network
-
-  ffmpeg:
-    image: jrottenberg/ffmpeg:latest
-    container_name: ffmpeg
-    entrypoint: ["sh", "-c", "while true; do sleep 30; done"]
     networks:
       - app-network
 
