@@ -1,11 +1,11 @@
-from celery import Celery
-import requests
+from celery_app import celery
+import logging
 
-app = Celery("tasks", broker="redis://redis:6379/0")
+logger = logging.getLogger(__name__)
 
-@app.task
+@celery.task(name='app.main.process_task')
 def process_task(data):
-    # Placeholder for external call to ffmpeg container
-    webhook_url = data.get("webhook_url")
-    if webhook_url:
-        requests.post(webhook_url, json={"status": "Processing completed"})
+    # Placeholder for processing logic using ffmpeg container
+    # Make webhook call to webhook_url in the payload
+    logger.debug(f"Processing task with data: {data}")
+    pass

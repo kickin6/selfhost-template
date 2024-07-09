@@ -1,0 +1,13 @@
+# redis/Dockerfile.redis
+
+FROM redis:latest
+
+COPY init_redis.sh /usr/local/bin/
+
+RUN apt-get update && apt-get install -y procps net-tools iputils-ping telnet
+
+RUN chmod +x /usr/local/bin/init_redis.sh
+
+ENTRYPOINT ["/usr/local/bin/init_redis.sh"]
+
+CMD ["redis-server"]
