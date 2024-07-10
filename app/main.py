@@ -1,10 +1,12 @@
-from flask import Flask, request, jsonify, make_response
+import json
 import os
-from flask_restx import Api, Resource, fields
+from flask import Flask, request, jsonify, make_response
+from flask_restx import Api, Resource, fields  # Ensure fields is imported
 from app.auth import api_key_required
 from app.celery_app import celery, init_celery
 from app.utils import load_schema, validate_data
 from app.tasks import process_task
+from .restx_utils import load_and_convert_schema
 
 import logging
 logging.basicConfig(level=logging.DEBUG)
@@ -31,10 +33,7 @@ def create_app(config_class=None):
         'x-api-key': fields.String(required=True, description='API key', location='headers')
     })
 
-    process_request_model = process_ns.model('ProcessRequest', {
-        'field1': fields.String(required=True, description='Field 1'),
-        'field2': fields.Integer(required=True, description='Field 2')
-    })
+    process_request_model = load_and_convert_schema(process_ns, 'process_request')
 
     @auth_ns.route("/authenticate")
     class Authenticate(Resource):
